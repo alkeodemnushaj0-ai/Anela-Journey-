@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0e1512">
+<title>Anela's Journey — Fitness & Wellness</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0e1512;--bg2:#101c15;
+  --panel:#151f19;--panel2:#1a251e;
+  --line:#293529;--line-soft:#212b23;
+  --text:#f3f1e8;--muted:#93a190;--muted2:#6d7a6c;
+  --accent:#ff9d6c;--accent-ink:#2a1206;
+  --sage:#9fd8a8;--gold:#f0c675;--danger:#ff8a8a;
+  --shadow:0 24px 60px -20px #000a;
+  --serif:'Fraunces',Georgia,serif;--sans:'Inter',system-ui,-apple-system,Segoe UI,sans-serif;
+  --r-lg:22px;--r-md:16px;--r-sm:11px;
+}
+@media (prefers-reduced-motion:reduce){*{animation-duration:.001ms!important;transition-duration:.001ms!important}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:
+  radial-gradient(700px 500px at 85% -10%,#2c3d2a55,transparent 60%),
+  radial-gradient(600px 500px at -10% 10%,#3a2a1e4d,transparent 55%),
+  linear-gradient(180deg,var(--bg2) 0%,var(--bg) 45%);
+  background-attachment:fixed;
+  color:var(--text);font:15px/1.55 var(--sans);-webkit-font-smoothing:antialiased}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer;border:0;background:none}
+input,select,textarea{outline:none}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:6px}
+.app{max-width:1180px;margin:auto;padding:20px 18px 90px}
+
+/* header */
+header{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:20px}
+.brand{display:flex;gap:12px;align-items:center;min-width:0}
+.logo{flex:none;width:46px;height:46px;border-radius:14px;background:linear-gradient(150deg,var(--accent),#e3714a);display:grid;place-items:center;font-size:21px;box-shadow:0 10px 26px #ff9d6c40;font-family:var(--serif)}
+.brand h1{font-family:var(--serif);font-weight:600;font-size:19px;margin:0;letter-spacing:.2px}
+.brand p{margin:2px 0 0;color:var(--muted2);font-size:11.5px}
+.headctl{display:flex;align-items:center;gap:8px}
+.savepill{display:flex;align-items:center;gap:6px;color:var(--muted2);font-size:11px;padding:6px 10px;border-radius:99px;background:#ffffff08;border:1px solid var(--line-soft)}
+.savepill .dot{width:6px;height:6px;border-radius:50%;background:var(--sage);box-shadow:0 0 0 3px #9fd8a822;transition:background .3s}
+.savepill.saving .dot{background:var(--gold);animation:pulse 1s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.35}}
+.iconbtn{color:var(--muted);background:var(--panel);border:1px solid var(--line);padding:9px 12px;border-radius:11px;font-size:12.5px;display:flex;align-items:center;gap:6px}
+.iconbtn:hover{color:var(--text);border-color:#3a4739}
+
+/* nav */
+nav{display:flex;gap:5px;overflow:auto;padding:5px;background:#0c120d;border:1px solid var(--line);border-radius:16px;margin-bottom:20px;scrollbar-width:none}
+nav::-webkit-scrollbar{display:none}
+nav button{white-space:nowrap;color:var(--muted);padding:10px 14px;border-radius:11px;font-size:13.5px;font-weight:500;transition:.2s}
+nav button.active{background:linear-gradient(150deg,#233024,#1c2a1f);color:var(--text);box-shadow:inset 0 0 0 1px #3a4a3a}
+
+.page{display:none;animation:rise .38s cubic-bezier(.2,.8,.2,1)}
+.page.active{display:block}
+@keyframes rise{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+/* hero */
+.hero{padding:28px;border:1px solid var(--line);border-radius:var(--r-lg);background:linear-gradient(160deg,#1b2a1f,#141d17 65%);box-shadow:var(--shadow);position:relative;overflow:hidden}
+.hero:after{content:"";position:absolute;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,#ff9d6c22,transparent 70%);right:-90px;top:-110px}
+.hero:before{content:"";position:absolute;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,#9fd8a81c,transparent 70%);left:-70px;bottom:-90px}
+.eyebrow{color:var(--sage);font-size:12px;font-weight:600;letter-spacing:.3px}
+.hero h2{font-family:var(--serif);font-weight:600;font-style:italic;font-size:clamp(26px,4.4vw,40px);line-height:1.08;margin:10px 0 8px;max-width:600px}
+.hero p{max-width:640px;color:#c3cdbf;margin:0;font-size:14.5px}
+
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:16px}
+.card{background:linear-gradient(160deg,var(--panel2),var(--panel));border:1px solid var(--line);border-radius:var(--r-md);padding:18px;box-shadow:0 14px 32px -18px #000a}
+.stat small{color:var(--muted2);font-size:11px;text-transform:uppercase;letter-spacing:.5px}
+.stat .num{font-family:var(--serif);font-size:26px;font-weight:600;margin-top:4px}
+.muted{color:var(--muted)}
+.section{margin-top:20px}
+.section h3{margin:0 0 13px;font-size:15.5px;font-weight:600;display:flex;align-items:center;justify-content:space-between}
+.two{display:grid;grid-template-columns:1.15fr .85fr;gap:14px}
+
+.formgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.field label{display:block;color:#b7c2b2;font-size:12px;margin-bottom:6px;font-weight:500}
+.field input,.field select,.field textarea{width:100%;background:#0b100c;border:1px solid #263127;color:var(--text);border-radius:var(--r-sm);padding:11px 12px;transition:border-color .15s}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--accent)}
+.field textarea{min-height:100px;resize:vertical}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:13px}
+.primary{background:linear-gradient(150deg,var(--accent),#e3714a);color:var(--accent-ink);font-weight:700;padding:11px 16px;border-radius:var(--r-sm);box-shadow:0 10px 24px -10px #ff9d6c55;transition:transform .12s}
+.primary:active{transform:scale(.97)}
+.secondary{background:#1c261f;color:var(--text);border:1px solid var(--line);padding:11px 16px;border-radius:var(--r-sm)}
+.secondary:hover{border-color:#3a4739}
+.danger{color:#ffb3b3;background:#24151280;border:1px solid #4a2726;padding:8px 12px;border-radius:9px;font-size:12.5px}
+.danger:hover{background:#2c1615}
+
+.progress{height:10px;background:#1c261f;border-radius:99px;overflow:hidden;margin:11px 0;border:1px solid var(--line-soft)}
+.bar{height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--gold));border-radius:99px;transition:width .6s cubic-bezier(.2,.8,.2,1)}
+.meal,.exercise,.logrow{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line-soft)}
+.meal:last-child,.exercise:last-child,.logrow:last-child{border-bottom:0}
+.tag{font-size:10.5px;padding:4px 8px;border-radius:8px;background:#233024;color:#c3d0c0;white-space:nowrap}
+.notice{padding:13px 14px;border-radius:12px;background:#16241c;border:1px solid #274536;color:#bde3cf;font-size:12.5px;line-height:1.5}
+.empty{text-align:center;color:var(--muted2);padding:26px 10px;font-size:13.5px}
+.empty b{display:block;color:var(--muted);font-size:14px;margin-bottom:3px;font-weight:600}
+
+.chart{height:190px;display:flex;align-items:end;gap:7px;padding:15px 3px 2px;border-bottom:1px solid var(--line)}
+.barcol{flex:1;display:flex;flex-direction:column;justify-content:end;height:100%;align-items:center;gap:6px}
+.barcol i{display:block;width:100%;max-width:40px;border-radius:8px 8px 3px 3px;background:linear-gradient(180deg,var(--accent),#a85c3a);min-height:4px;transition:height .5s ease}
+.barcol i.over{background:linear-gradient(180deg,var(--gold),#a8843a)}
+.barcol span{font-size:9.5px;color:var(--muted2)}
+.pillrow{display:flex;gap:7px;flex-wrap:wrap}
+.pill{padding:8px 12px;border-radius:99px;background:#1a241d;border:1px solid var(--line);color:#cfd9cc;font-size:13px;transition:.15s}
+.pill:hover{border-color:var(--accent)}
+.pill.sel{background:linear-gradient(150deg,var(--accent),#e3714a);color:var(--accent-ink);border-color:transparent;font-weight:600}
+
+.streaksrow{display:flex;gap:5px;margin:6px 0 2px}
+.streaksrow .sq{flex:1;aspect-ratio:1;border-radius:6px;background:#1a241d;border:1px solid var(--line-soft)}
+.streaksrow .sq.hit{background:linear-gradient(150deg,var(--sage),#5fae72);border-color:transparent}
+.streaksrow .sq.today{box-shadow:0 0 0 2px var(--gold)}
+
+.badges{display:flex;flex-wrap:wrap;gap:8px}
+.badge{display:flex;align-items:center;gap:7px;padding:8px 11px;border-radius:12px;background:#1a241d;border:1px solid var(--line);font-size:12px;color:var(--muted2)}
+.badge.on{color:var(--text);border-color:#3a4a3a;background:linear-gradient(150deg,#233024,#1a2a1e)}
+.badge .ic{font-size:15px;filter:grayscale(1);opacity:.5}
+.badge.on .ic{filter:none;opacity:1}
+
+.footer{text-align:center;color:var(--muted2);font-size:11px;margin-top:38px}
+.footer a{color:var(--muted)}
+
+/* toasts */
+#toasts{position:fixed;left:0;right:0;bottom:18px;display:flex;flex-direction:column;align-items:center;gap:8px;pointer-events:none;z-index:50}
+.toast{pointer-events:auto;background:#1a241dee;backdrop-filter:blur(6px);border:1px solid #3a4a3a;color:var(--text);padding:11px 16px;border-radius:99px;font-size:13px;box-shadow:0 12px 30px -8px #000c;animation:toastin .25s ease,toastout .3s ease 2.4s forwards;display:flex;align-items:center;gap:8px}
+@keyframes toastin{from{opacity:0;transform:translateY(10px)}}
+@keyframes toastout{to{opacity:0;transform:translateY(-6px)}}
+
+.modal-wrap{position:fixed;inset:0;background:#05080590;backdrop-filter:blur(3px);display:none;align-items:center;justify-content:center;z-index:60;padding:20px}
+.modal-wrap.show{display:flex}
+.modal{background:var(--panel2);border:1px solid var(--line);border-radius:var(--r-lg);padding:22px;max-width:420px;width:100%;box-shadow:var(--shadow)}
+.modal h3{margin:0 0 8px;font-family:var(--serif);font-size:19px}
+.modal p{color:var(--muted);font-size:13px;margin:0 0 16px}
+
+canvas#confetti{position:fixed;inset:0;pointer-events:none;z-index:70}
+
+@media(max-width:800px){.grid{grid-template-columns:repeat(2,1fr)}.two{grid-template-columns:1fr}.app{padding:14px 12px 60px}}
+@media(max-width:470px){.formgrid{grid-template-columns:1fr}.hero{padding:20px}.stat .num{font-size:21px}.brand p{display:none}}
+</style>
+</head>
+<body>
+<canvas id="confetti"></canvas>
+<div id="toasts"></div>
+
+<div class="app">
+<header>
+  <div class="brand"><div class="logo">✦</div><div><h1>Anela's Journey</h1><p>Strength · nourishment · consistency · self-respect</p></div></div>
+  <div class="headctl">
+    <div class="savepill" id="savepill"><span class="dot"></span><span id="savepillText">saved</span></div>
+    <button class="iconbtn" onclick="fileInput.click()">Import</button>
+    <button class="iconbtn" onclick="exportData()">Export</button>
+    <input type="file" id="fileInput" accept="application/json" style="display:none" onchange="importData(event)">
+  </div>
+</header>
+
+<nav id="nav">
+<button class="active" onclick="showPage('home',this)">Overview</button>
+<button onclick="showPage('profile',this)">My Profile</button>
+<button onclick="showPage('food',this)">Nutrition</button>
+<button onclick="showPage('workout',this)">Training</button>
+<button onclick="showPage('progress',this)">Progress</button>
+<button onclick="showPage('journal',this)">Journal</button>
+</nav>
+
+<section id="home" class="page active">
+<div class="hero"><span class="eyebrow">Anela's personal dashboard</span><h2>Build strength.<br>Take care of yourself.</h2><p>Track the things that help you feel stronger without turning your body into a number. Everything is saved automatically, right here on this device.</p></div>
+<div class="grid">
+<div class="card stat"><small>Today</small><div class="num" id="todayCal">0 kcal</div><span class="muted">logged food</span></div>
+<div class="card stat"><small>Target</small><div class="num" id="targetCal">—</div><span class="muted">your chosen target</span></div>
+<div class="card stat"><small>Water</small><div class="num" id="waterStat">0 L</div><span class="muted">today</span></div>
+<div class="card stat"><small>Streak</small><div class="num" id="streakStat">0 days</div><span class="muted">training consistency</span></div>
+</div>
+<div class="two section">
+<div class="card"><h3>Today's nutrition</h3><div id="homeProgress"></div><div class="notice" style="margin-top:12px">A calorie target is a planning tool, not a score. Energy needs vary with age, body size, activity and goals.</div></div>
+<div class="card"><h3>Quick actions</h3><div class="actions">
+<button class="primary" onclick="showPage('food',document.querySelectorAll('#nav button')[2])">+ Log food</button>
+<button class="secondary" onclick="showPage('workout',document.querySelectorAll('#nav button')[3])">+ Workout</button>
+<button class="secondary" onclick="addWater()">+ 250 ml water</button>
+</div>
+<div class="section"><h3 style="margin-bottom:10px">Last 14 days</h3><div class="streaksrow" id="homeStreak"></div></div>
+</div>
+</div>
+</section>
+
+<section id="profile" class="page">
+<div class="hero"><span class="eyebrow">Your baseline</span><h2>My Profile</h2><p>Keep measurements here only if they're useful to you. It's normal for numbers to change — that's not a setback.</p></div>
+<div class="card section"><div class="formgrid">
+<div class="field"><label>Name</label><input id="name" placeholder="Anela" oninput="liveSaveProfile()"></div>
+<div class="field"><label>Height (cm)</label><input id="height" type="number" min="50" max="250" oninput="liveSaveProfile()"></div>
+<div class="field"><label>Weight (kg)</label><input id="weight" type="number" min="20" max="300" step=".1" oninput="liveSaveProfile()"></div>
+<div class="field"><label>Daily calorie target (optional)</label><input id="target" type="number" min="800" max="6000" placeholder="e.g. 2200" oninput="liveSaveProfile()"></div>
+</div><div class="actions"><button class="primary" onclick="saveProfile(true)">Save profile</button></div>
+<div id="bmiNote" class="notice" style="margin-top:14px;display:none"></div>
+</div>
+<div class="card section"><h3>Wellness check-in</h3><div class="pillrow" id="moodPills"></div><div class="muted" id="moodToday" style="margin-top:10px;font-size:12.5px"></div></div>
+</section>
+
+<section id="food" class="page">
+<div class="hero"><span class="eyebrow">Nutrition</span><h2>Fuel the journey.</h2><p>Build meals from foods you actually enjoy. Calories are estimates — labels and recipes can vary.</p></div>
+<div class="two section">
+<div class="card"><h3>Log something you ate</h3><div class="formgrid">
+<div class="field"><label>Food / meal</label><input id="foodName" placeholder="Chicken rice bowl"></div>
+<div class="field"><label>Calories (kcal)</label><input id="foodCal" type="number" min="0" placeholder="500"></div>
+</div><div class="actions"><button class="primary" onclick="addFood()">Add to today</button></div></div>
+<div class="card"><h3>Today's total</h3><div class="num" style="font-family:var(--serif);font-size:30px" id="foodTotal">0 kcal</div><div class="progress"><div class="bar" id="foodBar"></div></div><span class="muted" id="foodRemaining">Set a target in My Profile.</span></div>
+</div>
+<div class="card section"><h3>Meal ideas</h3><div id="mealIdeas"></div></div>
+<div class="card section"><h3>Today's food log</h3><div id="foodLog"></div></div>
+</section>
+
+<section id="workout" class="page">
+<div class="hero"><span class="eyebrow">Training</span><h2>Train with intention.</h2><p>Choose a focus, then log the session. Rest and recovery are part of training too.</p></div>
+<div class="card section"><h3>Workout builder</h3><div class="formgrid">
+<div class="field"><label>Focus</label><select id="focus" onchange="renderExercises()"><option>Full Body</option><option>Leg Day</option><option>Upper Body</option><option>Lower Body</option><option>Glutes</option><option>Core</option><option>Running / Cardio</option><option>Mobility & Recovery</option></select></div>
+<div class="field"><label>Minutes</label><input id="minutes" type="number" min="1" max="300" value="60"></div>
+</div><div id="exerciseList" class="section"></div><div class="actions"><button class="primary" onclick="logWorkout()">Log this session</button></div></div>
+<div class="card section"><h3>Training principles</h3><div class="notice">Progress can mean better technique, more control, more reps, more weight, improved endurance — or simply showing up. Stop if you feel sharp pain, dizziness, chest pain, or anything concerning.</div></div>
+<div class="card section"><h3>Workout history</h3><div id="workoutLog"></div></div>
+</section>
+
+<section id="progress" class="page">
+<div class="hero"><span class="eyebrow">The bigger picture</span><h2>Progress, not perfection.</h2><p>See your logged activity without obsessing over a single day's number.</p></div>
+<div class="card section"><h3>Weekly food trend <span class="muted" style="font-weight:400;font-size:12px" id="chartAvg"></span></h3><div class="chart" id="chart"></div></div>
+<div class="two section">
+<div class="card"><h3>Journey stats</h3><div id="journeyStats"></div></div>
+<div class="card"><h3>Consistency</h3><div id="consistency"></div><div class="streaksrow" id="progStreak" style="margin-top:14px"></div></div>
+</div>
+<div class="card section"><h3>Milestones</h3><div class="badges" id="badges"></div></div>
+</section>
+
+<section id="journal" class="page">
+<div class="hero"><span class="eyebrow">Mindset</span><h2>Your journey is bigger than any measurement.</h2><p>Write down wins, hard days, thoughts, or what you're proud of today.</p></div>
+<div class="card section"><div class="field"><label>Today's note</label><textarea id="journalText" placeholder="Today I felt..." oninput="scheduleJournalDraftSave()"></textarea></div><div class="actions"><button class="primary" onclick="saveJournal()">Save today's note</button><span class="muted" id="journalDraftHint" style="align-self:center;font-size:12px"></span></div></div>
+<div class="card section"><h3>Recent notes</h3><div id="journalLog"></div></div>
+</section>
+
+<div class="footer">Anela's Journey · everything stays saved in this browser · not medical advice</div>
+</div>
+
+<div class="modal-wrap" id="importModal"><div class="modal">
+  <h3>Replace your data?</h3>
+  <p>Importing this file will overwrite everything currently saved in this browser — food, workouts, journal entries, all of it. This can't be undone.</p>
+  <div class="actions"><button class="primary" onclick="confirmImport()">Yes, replace it</button><button class="secondary" onclick="closeImportModal()">Cancel</button></div>
+</div></div>
+
+<script>
+const KEY='anelaJourney_v1';
+let pendingImport=null;
+let journalDraftTimer=null;
+
+function blank(){return {profile:{name:'Anela',height:'',weight:'',target:''},foods:[],workouts:[],water:{},journals:[],moods:{},journalDraft:''}}
+let data=Object.assign(blank(),JSON.parse(localStorage.getItem(KEY)||'null')||{});
+const today=()=>new Date().toISOString().slice(0,10);
+const dstr=d=>d.toISOString().slice(0,10);
+
+function save(msg){
+  const pill=savepill;pill.classList.add('saving');savepillText.textContent='saving…';
+  localStorage.setItem(KEY,JSON.stringify(data));
+  renderAll();
+  requestAnimationFrame(()=>setTimeout(()=>{pill.classList.remove('saving');savepillText.textContent='saved just now'},260));
+  if(msg)toast(msg);
+}
+
+function toast(msg,icon){
+  const t=document.createElement('div');t.className='toast';t.innerHTML=`<span>${icon||'✓'}</span><span>${esc(msg)}</span>`;
+  toasts.appendChild(t);setTimeout(()=>t.remove(),2800);
+}
+
+function showPage(id,btn){
+  document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.querySelectorAll('nav button').forEach(x=>x.classList.remove('active'));
+  if(btn)btn.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+/* profile */
+function profile(){
+  name.value=data.profile.name||'';height.value=data.profile.height||'';weight.value=data.profile.weight||'';target.value=data.profile.target||'';
+  renderBmi();
+}
+function liveSaveProfile(){
+  data.profile={name:name.value.trim()||'Anela',height:height.value,weight:weight.value,target:target.value};
+  localStorage.setItem(KEY,JSON.stringify(data));
+  savepillText.textContent='saved just now';
+  renderBmi();
+  todayCal.parentElement && renderFood();
+}
+function saveProfile(){liveSaveProfile();save('Profile saved')}
+function renderBmi(){
+  const h=Number(data.profile.height),w=Number(data.profile.weight);
+  if(!h||!w){bmiNote.style.display='none';return}
+  const bmi=(w/((h/100)**2)).toFixed(1);
+  bmiNote.style.display='block';
+  bmiNote.textContent=`BMI is a rough population-level estimate, not a health verdict — it doesn't account for muscle, frame, or individual differences. Your current calculation: ${bmi}.`;
+}
+
+/* food */
+function dayFoods(){return data.foods.filter(x=>x.date===today())}
+function calToday(){return dayFoods().reduce((a,b)=>a+Number(b.cal||0),0)}
+function addFood(){
+  let n=foodName.value.trim(),c=Number(foodCal.value);
+  if(!n||!c)return toast('Add a food name and its estimated calories','⚠');
+  data.foods.unshift({id:Date.now(),date:today(),name:n,cal:c});
+  foodName.value='';foodCal.value='';
+  save('Logged '+n);
+}
+function delFood(id){data.foods=data.foods.filter(x=>x.id!==id);save('Removed from today\'s log')}
+function addWater(){data.water[today()]=(data.water[today()]||0)+.25;save('250 ml added 💧')}
+const ideas=[['Greek yogurt + berries + oats','350–500 kcal'],['Eggs + toast + avocado + fruit','450–650 kcal'],['Chicken + rice + vegetables','500–750 kcal'],['Salmon + potatoes + salad','500–750 kcal'],['Lentil bowl + yogurt','450–650 kcal'],['Oatmeal + banana + peanut butter','450–650 kcal']];
+
+/* workout */
+const ex={'Full Body':['Squat or leg press','Row','Push-up or chest press','Romanian deadlift','Plank'],'Leg Day':['Squat / leg press','Romanian deadlift','Walking lunge','Leg curl','Calf raise'],'Upper Body':['Lat pulldown','Seated row','Chest press','Shoulder press','Biceps curl'],'Lower Body':['Squat','Hip thrust','Romanian deadlift','Leg curl','Calf raise'],'Glutes':['Hip thrust','Bulgarian split squat','Cable kickback','Romanian deadlift','Abduction'],'Core':['Dead bug','Plank','Side plank','Cable crunch','Bird dog'],'Running / Cardio':['Easy warm-up','Steady run or walk','Intervals if appropriate','Cool-down walk','Gentle stretching'],'Mobility & Recovery':['Easy walk','Hip mobility','Thoracic rotation','Hamstring mobility','Breathing / relaxation']};
+function renderExercises(){exerciseList.innerHTML=(ex[focus.value]||[]).map((e,i)=>`<div class="exercise"><span>${i+1}. ${e}</span><span class="tag">suggestion</span></div>`).join('')}
+function logWorkout(){
+  let f=focus.value,m=Number(minutes.value)||0;
+  const prevStreak=currentStreak();
+  data.workouts.unshift({id:Date.now(),date:today(),focus:f,minutes:m});
+  save('Logged '+f+' · '+m+' min');
+  const newStreak=currentStreak();
+  if([3,7,14,30,60,100].includes(newStreak)&&newStreak>prevStreak)burstConfetti();
+}
+function delWorkout(id){data.workouts=data.workouts.filter(x=>x.id!==id);save('Removed session')}
+
+/* journal */
+function scheduleJournalDraftSave(){
+  journalDraftHint.textContent='typing…';
+  clearTimeout(journalDraftTimer);
+  journalDraftTimer=setTimeout(()=>{
+    data.journalDraft=journalText.value;
+    localStorage.setItem(KEY,JSON.stringify(data));
+    journalDraftHint.textContent='draft saved';
+  },600);
+}
+function saveJournal(){
+  let t=journalText.value.trim();if(!t)return toast('Write something first','⚠');
+  data.journals.unshift({id:Date.now(),date:today(),text:t});
+  data.journalDraft='';journalText.value='';journalDraftHint.textContent='';
+  save('Note saved');
+}
+function delJournal(id){data.journals=data.journals.filter(x=>x.id!==id);save('Entry removed')}
+
+/* streak / badges */
+function currentStreak(){
+  let active=new Set(data.workouts.map(x=>x.date)),streak=0;
+  for(let i=0;i<365;i++){let d=new Date();d.setDate(d.getDate()-i);if(active.has(dstr(d)))streak++;else break}
+  return streak;
+}
+function renderStreakStrip(el,days){
+  let active=new Set(data.workouts.map(x=>x.date));
+  let arr=[...Array(days)].map((_,i)=>{let d=new Date();d.setDate(d.getDate()-(days-1-i));return d});
+  el.innerHTML=arr.map(d=>{
+    const ds=dstr(d),isToday=ds===today();
+    return `<div class="sq ${active.has(ds)?'hit':''} ${isToday?'today':''}" title="${ds}"></div>`;
+  }).join('');
+}
+const BADGE_DEFS=[
+  {id:'first_food',ic:'🍽️',label:'First meal logged',test:d=>d.foods.length>=1},
+  {id:'first_workout',ic:'🏋️',label:'First workout logged',test:d=>d.workouts.length>=1},
+  {id:'first_note',ic:'📝',label:'First journal entry',test:d=>d.journals.length>=1},
+  {id:'ten_foods',ic:'🥗',label:'10 meals logged',test:d=>d.foods.length>=10},
+  {id:'streak3',ic:'🔥',label:'3-day streak',test:()=>currentStreak()>=3},
+  {id:'streak7',ic:'⭐',label:'7-day streak',test:()=>currentStreak()>=7},
+  {id:'streak14',ic:'💎',label:'14-day streak',test:()=>currentStreak()>=14},
+  {id:'hydration',ic:'💧',label:'Hydrated today',test:d=>(d.water[today()]||0)>=1.5},
+];
+function renderBadges(){
+  badges.innerHTML=BADGE_DEFS.map(b=>{
+    const on=b.test(data);
+    return `<div class="badge ${on?'on':''}"><span class="ic">${b.ic}</span>${b.label}</div>`;
+  }).join('');
+}
+
+/* rendering */
+function renderFood(){
+  let c=calToday(),t=Number(data.profile.target)||0;
+  foodTotal.textContent=c.toLocaleString()+' kcal';
+  todayCal.textContent=c.toLocaleString()+' kcal';
+  targetCal.textContent=t?t.toLocaleString()+' kcal':'—';
+  foodBar.style.width=t?Math.min(100,c/t*100)+'%':'0%';
+  foodRemaining.textContent=t?(c<=t?`${(t-c).toLocaleString()} kcal remaining today`:`${(c-t).toLocaleString()} kcal over target`):'Set a target in My Profile.';
+  homeProgress.innerHTML=`<div class="progress"><div class="bar" style="width:${t?Math.min(100,c/t*100):0}%"></div></div><b style="font-family:var(--serif);font-size:17px">${c.toLocaleString()}${t?' / '+t.toLocaleString():' kcal'}</b>`;
+  foodLog.innerHTML=dayFoods().length?dayFoods().map(x=>`<div class="logrow"><span>${esc(x.name)}</span><b>${Number(x.cal).toLocaleString()} kcal</b><button class="danger" onclick="delFood(${x.id})">Delete</button></div>`).join(''):'<div class="empty"><b>Nothing logged today</b>Add your first meal above.</div>';
+  mealIdeas.innerHTML=ideas.map(x=>`<div class="meal"><span>${x[0]}</span><span class="tag">${x[1]}</span></div>`).join('');
+}
+function renderWorkouts(){
+  workoutLog.innerHTML=data.workouts.length?data.workouts.slice(0,20).map(x=>`<div class="logrow"><span><b>${esc(x.focus)}</b><br><small class="muted">${x.date} · ${x.minutes} min</small></span><button class="danger" onclick="delWorkout(${x.id})">Delete</button></div>`).join(''):'<div class="empty"><b>No sessions yet</b>Log your first workout above.</div>';
+}
+function renderProgress(){
+  let days=[...Array(7)].map((_,i)=>{let d=new Date();d.setDate(d.getDate()-(6-i));return dstr(d)});
+  let vals=days.map(d=>data.foods.filter(x=>x.date===d).reduce((a,b)=>a+Number(b.cal),0));
+  let t=Number(data.profile.target)||0,mx=Math.max(...vals,t,1);
+  chart.innerHTML=vals.map((v,i)=>`<div class="barcol"><i class="${t&&v>t?'over':''}" style="height:${v?Math.max(3,v/mx*82):2}%"></i><span>${days[i].slice(5)}</span></div>`).join('');
+  const loggedDays=vals.filter(v=>v>0);
+  chartAvg.textContent=loggedDays.length?'avg '+Math.round(loggedDays.reduce((a,b)=>a+b,0)/loggedDays.length).toLocaleString()+' kcal/day':'';
+  let totalM=data.workouts.reduce((a,b)=>a+Number(b.minutes),0);
+  journeyStats.innerHTML=`<div class="logrow"><span>Workouts logged</span><b>${data.workouts.length}</b></div><div class="logrow"><span>Total training time</span><b>${totalM} min</b></div><div class="logrow"><span>Meals logged</span><b>${data.foods.length}</b></div><div class="logrow"><span>Journal entries</span><b>${data.journals.length}</b></div>`;
+  const streak=currentStreak();
+  consistency.innerHTML=`<div style="font-family:var(--serif);font-size:30px;font-weight:600">${streak} day${streak===1?'':'s'}</div><span class="muted">current training streak</span><p class="muted" style="font-size:12.5px;margin-top:8px">A missed day isn't failure — recovery counts too.</p>`;
+  renderStreakStrip(progStreak,14);
+  renderStreakStrip(homeStreak,14);
+  streakStat.textContent=streak+' day'+(streak===1?'':'s');
+  renderBadges();
+}
+function renderJournal(){
+  journalLog.innerHTML=data.journals.length?data.journals.slice(0,15).map(x=>`<div class="logrow"><span><small class="muted">${x.date}</small><br>${esc(x.text)}</span><button class="danger" onclick="delJournal(${x.id})">Delete</button></div>`).join(''):'<div class="empty"><b>Your thoughts will appear here</b>Write your first note above.</div>';
+  if(data.journalDraft&&!journalText.value)journalText.value=data.journalDraft;
+}
+const MOODS=['😊 Great','🙂 Good','😐 Okay','😮‍💨 Tired','💪 Strong','🫶 Proud'];
+function renderMood(){
+  moodPills.innerHTML=MOODS.map(m=>`<button class="pill ${data.moods[today()]===m?'sel':''}" onclick="setMood('${m}')">${m}</button>`).join('');
+  moodToday.textContent=data.moods[today()]?`Today's check-in: ${data.moods[today()]}`:'No check-in yet today.';
+}
+function setMood(m){data.moods[today()]=m;save('Check-in saved: '+m)}
+function esc(s){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
+function renderAll(){
+  profile();renderFood();renderWorkouts();renderProgress();renderJournal();renderMood();
+  waterStat.textContent=(data.water[today()]||0).toFixed(2).replace(/\.?0+$/,'')+' L';
+}
+
+/* export / import */
+function exportData(){
+  let blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'}),a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);a.download='anela-journey-backup-'+today()+'.json';a.click();URL.revokeObjectURL(a.href);
+  toast('Backup downloaded');
+}
+function importData(evt){
+  const file=evt.target.files[0];if(!file)return;
+  const reader=new FileReader();
+  reader.onload=e=>{
+    try{
+      const parsed=JSON.parse(e.target.result);
+      if(!parsed||typeof parsed!=='object')throw 0;
+      pendingImport=Object.assign(blank(),parsed);
+      importModal.classList.add('show');
+    }catch(err){toast('That file could not be read','⚠')}
+  };
+  reader.readAsText(file);
+  evt.target.value='';
+}
+function confirmImport(){
+  if(pendingImport){data=pendingImport;pendingImport=null;save('Data imported')}
+  closeImportModal();
+}
+function closeImportModal(){importModal.classList.remove('show');pendingImport=null}
+
+/* confetti — brief, one-shot celebration on streak milestones */
+function burstConfetti(){
+  const c=document.getElementById('confetti'),ctx=c.getContext('2d');
+  c.width=innerWidth;c.height=innerHeight;
+  const colors=['#ff9d6c','#f0c675','#9fd8a8','#f3f1e8'];
+  let parts=[...Array(70)].map(()=>({x:Math.random()*c.width,y:-20-Math.random()*200,vx:(Math.random()-.5)*3,vy:2+Math.random()*3,s:4+Math.random()*4,r:Math.random()*6.28,vr:(Math.random()-.5)*.3,col:colors[Math.floor(Math.random()*colors.length)]}));
+  let frame=0;
+  function tick(){
+    ctx.clearRect(0,0,c.width,c.height);
+    parts.forEach(p=>{p.x+=p.vx;p.y+=p.vy;p.r+=p.vr;ctx.save();ctx.translate(p.x,p.y);ctx.rotate(p.r);ctx.fillStyle=p.col;ctx.fillRect(-p.s/2,-p.s/2,p.s,p.s*.6);ctx.restore()});
+    frame++;
+    if(frame<130)requestAnimationFrame(tick);else ctx.clearRect(0,0,c.width,c.height);
+  }
+  tick();
+  toast('Streak milestone hit 🎉');
+}
+
+renderExercises();renderAll();
+window.addEventListener('storage',e=>{if(e.key===KEY){data=Object.assign(blank(),JSON.parse(e.newValue||'null')||{});renderAll()}});
+</script>
+</body>
+</html>
